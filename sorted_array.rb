@@ -38,8 +38,16 @@ class SortedArray
   end
 
   def each &block
-    raise NotImplementedError.new("You need to implement the each method!")
+    # loop over all elements in @internal_arr
+    # yield to each element
+    i = 0
+    while i < @internal_arr.size
+      yield @internal_arr[i]
+      i += 1
+    end
+    @internal_arr
   end
+
 
   def map &block
     raise NotImplementedError.new("You need to implement the map method!")
