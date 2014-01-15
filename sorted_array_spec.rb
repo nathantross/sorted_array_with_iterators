@@ -34,7 +34,8 @@ describe SortedArray do
         it_should_behave_like "yield to all elements in sorted array", :map
 
         it 'creates a new array containing the values returned by the block' do
-          pending "fill this spec in with a meaningful example"
+          expect { sorted_array.map {|el| el + 1 }.should == [3,4,5,8,10] }
+          #pending "fill this spec in with a meaningful example"
         end
       end
     end
@@ -55,7 +56,7 @@ describe SortedArray do
   end
 
   describe :find do
-    it_should_behave_like "yield to all elements in sorted array", :find
+    
 
     it "does not currently have any examples for it" do
       pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
@@ -63,10 +64,18 @@ describe SortedArray do
   end
 
   describe :inject do
-    it_should_behave_like "yield to all elements in sorted array", :inject
+    
+    specify do 
+      expect do |b| 
+        block_with_two_args = Proc.new { |acc,el| return true }
+        sorted_array.send(method, &b) 
+      end.to yield_successive_args([0,2], [2,3], [5,4], [9,7], [16,9]) 
+    end
+
 
     it "does not currently have any examples for it" do
       pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-inject"
     end
   end
 end
+

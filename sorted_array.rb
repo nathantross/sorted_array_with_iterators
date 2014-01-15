@@ -48,20 +48,34 @@ class SortedArray
     @internal_arr
   end
 
-
   def map &block
-    raise NotImplementedError.new("You need to implement the map method!")
+    new_arr = @internal_arr.dup
+    return new_arr.each &block
+    #raise NotImplementedError.new("You need to implement the map method!")
   end
 
   def map! &block
-    raise NotImplementedError.new("You need to implement the map! method!")
+    new_arr == @internal_arr &block
+    #raise NotImplementedError.new("You need to implement the map! method!")
   end
 
   def find value
-    raise NotImplementedError.new("You need to implement the find method!")
+      i = 0
+      find_value = @internal_arr[i]
+      while find_value != @internal_arr[i]
+        yield @internal_arr[i]
+        i += 1
+      end
+      find_value
+    #raise NotImplementedError.new("You need to implement the find method!")
   end
 
   def inject acc=nil, &block
-    raise NotImplementedError.new("You need to implement the inject method!")
+
+    #raise NotImplementedError.new("You need to implement the inject method!")
   end
 end
+
+
+#each with index
+
