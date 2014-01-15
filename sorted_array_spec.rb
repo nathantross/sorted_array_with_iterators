@@ -43,13 +43,13 @@ describe SortedArray do
     describe "that update the original array" do
       describe :map! do
         it 'the original array should be updated' do
-          pending "fill this spec in with a meaningful example"
+          expect { sorted_array.map { |el| el + 1 }.should == original_array }
         end
 
         it_should_behave_like "yield to all elements in sorted array", :map!
 
         it 'should replace value of each element with the value returned by block' do
-          pending "this is just the same as the example above"
+          expect { sorted_array.map { |el| el + 1 }.should == original_array }
         end
       end
     end
@@ -57,10 +57,14 @@ describe SortedArray do
 
   describe :find do
     
-
-    it "does not currently have any examples for it" do
-      pending "define some examples by looking up http://www.ruby-doc.org/core-2.1.0/Enumerable.html#method-i-find"
+    it "searches the array for a specific item" do
+      expect { sorted_array.find(8)} 
     end
+
+   it "searches the array for a specific item that's not there" do
+     expect { sorted_array.find("x")} 
+    end
+
   end
 
   describe :inject do

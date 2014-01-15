@@ -55,15 +55,15 @@ class SortedArray
   end
 
   def map! &block
-    new_arr == @internal_arr &block
+    @internal_arr.each &block
     #raise NotImplementedError.new("You need to implement the map! method!")
   end
 
   def find value
       i = 0
       find_value = @internal_arr[i]
-      while find_value != @internal_arr[i]
-        yield @internal_arr[i]
+      until find_value == @internal_arr[i]
+        yield @internal_arr[i] &block
         i += 1
       end
       find_value
@@ -71,7 +71,10 @@ class SortedArray
   end
 
   def inject acc=nil, &block
-
+    #  inject_array do |b| 
+    #   block_with_two_args = Proc.new { |acc,el| return true }
+    #   sorted_array.send(inject, inject) 
+    # end
     #raise NotImplementedError.new("You need to implement the inject method!")
   end
 end
